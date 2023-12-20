@@ -172,7 +172,7 @@ console.log(
 let controlPalindrome = function (string) {
   let lToR = [];
   let rtoL = [];
-  let strToArr = string.toLowerCase().replace(/\s/g, "").split("");
+  let strToArr = string.toLowerCase().replace(/[^a-zA-Z]/g, "").split("");
   for (let i = 0; i < strToArr.length; i++) {
     lToR.push(strToArr[i]);
   }
@@ -188,7 +188,7 @@ let controlPalindrome = function (string) {
   }
 };
 
-console.log(controlPalindrome("E VIDE TRE CORTEI DI NANI DIETRO CERTE DIVE"));
+console.log(controlPalindrome("E VIDE TRE' CORTEI DI NANI DIETRO CERTE DIVE"));
 
 // ex 5 extra
 
