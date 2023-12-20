@@ -172,7 +172,7 @@ console.log(
 let controlPalindrome = function (string) {
   let lToR = [];
   let rtoL = [];
-  let strToArr = string.toLowerCase().split("");
+  let strToArr = string.toLowerCase().replace(/\s/g, "").split("");
   for (let i = 0; i < strToArr.length; i++) {
     lToR.push(strToArr[i]);
   }
@@ -188,7 +188,7 @@ let controlPalindrome = function (string) {
   }
 };
 
-console.log(controlPalindrome("ossesso"));
+console.log(controlPalindrome("E VIDE TRE CORTEI DI NANI DIETRO CERTE DIVE"));
 
 // ex 5 extra
 
@@ -252,7 +252,7 @@ let printPiramid = function (number) {
   let space = " ";
   for (let i = number; i > 0; i--) {
     console.log(space.repeat(i) + hash);
-    hash += "##"
+    hash += "##";
   }
 };
 
@@ -261,32 +261,35 @@ printPiramid(5);
 // ex 10 extra
 
 let spiralMatrix = function (n) {
-    let row = 0
-    let col = 0
-    let endRow = n 
-    let endCol = n
-    let counter = 1
-    let matrixOutput = Array.from({ length: n }, () => Array(n).fill(0));
-    for (let i = col; i < endCol; i++ ) {
-        matrixOutput[row][i] = counter
-        counter++
+  let row = 0;
+  let col = 0;
+  let endRow = n - 1;
+  let endCol = n - 1;
+  let counter = 1;
+  let matrixOutput = Array.from({ length: n }, () => Array(n).fill(0));
+  while (col <= endCol && row <= endRow) {
+    for (let i = col; i <= endCol; i++) {
+      matrixOutput[row][i] = counter;
+      counter++;
     }
-    row++
-    for (let i = row; i < endRow; i++) {
-        matrixOutput[i][endCol - 1] = counter
-        counter++
+    row++;
+    for (let i = row; i <= endRow; i++) {
+      matrixOutput[i][endCol] = counter;
+      counter++;
     }
-    endCol--
-    for (let i = endCol - 1; i >= col; i--) {
-        matrixOutput[endRow - 1][i] = counter
-        counter++
+    endCol--;
+    for (let i = endCol; i >= col; i--) {
+      matrixOutput[endRow][i] = counter;
+      counter++;
     }
-    endRow--
-    for (let i = col; i < endCol; i++) {
-        matrixOutput[endRow - 1][i] = counter
-        counter++
+    endRow--;
+    for (let i = endRow; i >= row; i--) {
+      matrixOutput[i][col] = counter;
+      counter++;
     }
-    return matrixOutput
-}
+    col++;
+  }
+  return matrixOutput;
+};
 
-console.log(spiralMatrix(3))
+console.log(spiralMatrix(6));
