@@ -292,4 +292,4 @@ let spiralMatrix = function (n) {
   return matrixOutput;
 };
 
-console.log(spiralMatrix(6));
+console.log(spiralMatrix(3));
